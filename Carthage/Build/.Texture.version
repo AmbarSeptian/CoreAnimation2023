@@ -1,0 +1,26 @@
+{
+  "Mac" : [
+
+  ],
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "commitish" : "d41e13657b123b4265431a48621dbea17f41bd97",
+  "iOS" : [
+    {
+      "hash" : "250d325b04b47035c9956f462899fb3538114145de943614e1d0fe2aa4fc1286",
+      "name" : "AsyncDisplayKit",
+      "container" : "AsyncDisplayKit.xcframework",
+      "identifier" : "ios-arm64"
+    },
+    {
+      "hash" : "fa80aa9b9eda12c1cd0638e8627101e9751bf668d5fc80157e0da117a48d7e7c",
+      "name" : "AsyncDisplayKit",
+      "container" : "AsyncDisplayKit.xcframework",
+      "identifier" : "ios-arm64_x86_64-simulator"
+    }
+  ]
+}

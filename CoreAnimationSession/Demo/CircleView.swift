@@ -7,20 +7,34 @@
 
 import UIKit
 
-
 internal class CircleView: UIView {
     private var gradientLayer: CAGradientLayer?
     private var shapeLayer: CAShapeLayer?
+    private let animationKeys = "AnimationKeys"
+    
+    enum AnimationKey: String {
+        case rotate = "rotateAnimation"
+        case scale = "scaleAnimation"
+    }
     
     init() {
         super.init(frame: .zero)
 
         frame = .init(x: 0, y: 0, width: 200, height: 200)
+        
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.addTarget(self, action: #selector(self.onTap))
+        addGestureRecognizer(tapGesture)
+        
         setupLayer()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func onTap() {
+        runAnimation()
     }
 
     private func setupLayer() {
@@ -64,16 +78,15 @@ internal class CircleView: UIView {
         scaleKeyFrameAnim.duration = 3
         scaleKeyFrameAnim.keyTimes = [0, 0.5, 1]
         scaleKeyFrameAnim.delegate = self
-        scaleKeyFrameAnim.setValue("scaleAnim", forKey: "animationKeys")
+        scaleKeyFrameAnim.setValue(AnimationKey.scale.rawValue, forKey: animationKeys)
         
-
         let rotateAnim = CABasicAnimation(keyPath: "transform.rotation.z")
         rotateAnim.fromValue = 0
         rotateAnim.toValue = CGFloat.pi * 2
         rotateAnim.duration = 1
         rotateAnim.beginTime = CACurrentMediaTime() + 1
         rotateAnim.delegate = self
-        rotateAnim.setValue("rotateAnim", forKey: "animationKeys")
+        rotateAnim.setValue(AnimationKey.rotate.rawValue, forKey: animationKeys)
         
         self.gradientLayer?.add(scaleKeyFrameAnim, forKey: nil)
         self.gradientLayer?.add(rotateAnim, forKey: nil)
@@ -83,14 +96,14 @@ internal class CircleView: UIView {
 
 extension CircleView: CAAnimationDelegate {
     func animationDidStart(_ anim: CAAnimation) {
-        guard let key = anim.value(forKey: "animationKeys") as? String else {
+        guard let key = anim.value(forKey: animationKeys) as? String else {
             return
         }
         
         switch key {
-        case "scaleAnim":
+        case AnimationKey.scale.rawValue:
             break
-        case "rotateAnim":
+        case AnimationKey.rotate.rawValue:
             shapeLayer?.lineDashPattern = [30, 10]
         default:
             break
@@ -99,14 +112,14 @@ extension CircleView: CAAnimationDelegate {
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         
-        guard let key = anim.value(forKey: "animationKeys") as? String else {
+        guard let key = anim.value(forKey: animationKeys) as? String else {
             return
         }
         
         switch key {
-        case "scaleAnim":
+        case AnimationKey.scale.rawValue:
             break
-        case "rotateAnim":
+        case AnimationKey.rotate.rawValue:
             shapeLayer?.lineDashPattern = nil
         default:
             break
@@ -121,11 +134,6 @@ extension CircleView: CAAnimationDelegate {
     containerView.addSubview(circleView)
     
     circleView.frame.origin = CGPoint(x: 100, y: 300)
-    // For animation demo purpose
-    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-        circleView.runAnimation()
-    }
-    
     
     
     return containerView
