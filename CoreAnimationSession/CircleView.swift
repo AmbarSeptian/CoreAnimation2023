@@ -54,57 +54,63 @@ internal class CircleView: UIView {
         
         self.gradientLayer = gradientLayer
         self.shapeLayer = shapeLayer
-    }
-
-    internal func runAnimation() {
-        
-        let scaleAnim = CABasicAnimation(keyPath: "transform.scale.z")
-        scaleAnim.toValue = 1.1
-        scaleAnim.duration = 1
-        scaleAnim.delegate = self
-        
-        gradientLayer?.transform = CATransform3DMakeScale(1.1, 1.1, 1.0)
-        
-        runRotateAnimation()
-        gradientLayer?.add(scaleAnim, forKey: "circleScale")
         
     }
     
-    func runRotateAnimation() {
+    internal func runAnimation() {
+        
+        let scaleKeyFrameAnim = CAKeyframeAnimation(keyPath: "transform.scale")
+        scaleKeyFrameAnim.values = [1, 1.3, 1]
+        scaleKeyFrameAnim.duration = 3
+        scaleKeyFrameAnim.keyTimes = [0, 0.5, 1]
+        scaleKeyFrameAnim.delegate = self
+        scaleKeyFrameAnim.setValue("scaleAnim", forKey: "animationKeys")
+        
+
         let rotateAnim = CABasicAnimation(keyPath: "transform.rotation.z")
         rotateAnim.fromValue = 0
         rotateAnim.toValue = CGFloat.pi * 2
-        rotateAnim.duration = 2
+        rotateAnim.duration = 1
         rotateAnim.beginTime = CACurrentMediaTime() + 1
-        gradientLayer?.add(rotateAnim, forKey: nil)
-        self.shapeLayer?.lineDashPattern = [10, 5]
+        rotateAnim.delegate = self
+        rotateAnim.setValue("rotateAnim", forKey: "animationKeys")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let scaleAnim = CABasicAnimation(keyPath: "transform.scale.z")
-            scaleAnim.toValue = 1
-            scaleAnim.duration = 1
-            
-            self.gradientLayer?.add(scaleAnim, forKey: nil)
-            self.gradientLayer?.transform = CATransform3DMakeScale(1, 1, 1.0)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            let dashAnim = CABasicAnimation(keyPath: "lineDashPhase")
-            dashAnim.toValue = 1
-            dashAnim.duration = 2
-            
-            self.shapeLayer?.add(dashAnim, forKey: nil)
-        }
+        self.gradientLayer?.add(scaleKeyFrameAnim, forKey: nil)
+        self.gradientLayer?.add(rotateAnim, forKey: nil)
     }
+    
 }
 
 extension CircleView: CAAnimationDelegate {
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-   
-        if shapeLayer?.animation(forKey: "circleScale") == anim {
-            runRotateAnimation()
+    func animationDidStart(_ anim: CAAnimation) {
+        guard let key = anim.value(forKey: "animationKeys") as? String else {
+            return
         }
         
+        switch key {
+        case "scaleAnim":
+            break
+        case "rotateAnim":
+            shapeLayer?.lineDashPattern = [30, 10]
+        default:
+            break
+        }
+    }
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        
+        guard let key = anim.value(forKey: "animationKeys") as? String else {
+            return
+        }
+        
+        switch key {
+        case "scaleAnim":
+            break
+        case "rotateAnim":
+            shapeLayer?.lineDashPattern = nil
+        default:
+            break
+        }
     }
 }
 
