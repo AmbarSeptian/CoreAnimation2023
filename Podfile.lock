@@ -1,0 +1,67 @@
+PODS:
+  - libwebp (1.2.4):
+    - libwebp/demux (= 1.2.4)
+    - libwebp/mux (= 1.2.4)
+    - libwebp/webp (= 1.2.4)
+  - libwebp/demux (1.2.4):
+    - libwebp/webp
+  - libwebp/mux (1.2.4):
+    - libwebp/demux
+  - libwebp/webp (1.2.4)
+  - PINCache (3.0.1-beta.6):
+    - PINCache/Arc-exception-safe (= 3.0.1-beta.6)
+    - PINCache/Core (= 3.0.1-beta.6)
+  - PINCache/Arc-exception-safe (3.0.1-beta.6):
+    - PINCache/Core
+  - PINCache/Core (3.0.1-beta.6):
+    - PINOperation (~> 1.1.0)
+  - PINOperation (1.1.2)
+  - PINRemoteImage/Core (3.0.0-beta.13):
+    - PINOperation
+  - PINRemoteImage/iOS (3.0.0-beta.13):
+    - PINRemoteImage/Core
+  - PINRemoteImage/PINCache (3.0.0-beta.13):
+    - PINCache (= 3.0.1-beta.6)
+    - PINRemoteImage/Core
+  - PINRemoteImage/WebP (3.0.0-beta.13):
+    - libwebp
+    - PINRemoteImage/Core
+  - Texture (2.7):
+    - Texture/PINRemoteImage (= 2.7)
+  - Texture/Core (2.7)
+  - Texture/PINRemoteImage (2.7):
+    - PINRemoteImage/iOS (= 3.0.0-beta.13)
+    - PINRemoteImage/PINCache
+    - PINRemoteImage/WebP
+    - Texture/Core
+
+DEPENDENCIES:
+  - "Texture (from `git@github.com:TokoFree/Texture.git`, commit `90ce23e78f5ac93f97a61aaa07b3aa6255cd9f61`)"
+
+SPEC REPOS:
+  trunk:
+    - libwebp
+    - PINCache
+    - PINOperation
+    - PINRemoteImage
+
+EXTERNAL SOURCES:
+  Texture:
+    :commit: 90ce23e78f5ac93f97a61aaa07b3aa6255cd9f61
+    :git: "git@github.com:TokoFree/Texture.git"
+
+CHECKOUT OPTIONS:
+  Texture:
+    :commit: 90ce23e78f5ac93f97a61aaa07b3aa6255cd9f61
+    :git: "git@github.com:TokoFree/Texture.git"
+
+SPEC CHECKSUMS:
+  libwebp: f62cb61d0a484ba548448a4bd52aabf150ff6eef
+  PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
+  PINOperation: 24b774353ca248fcf87d67b2d61eef42087c125a
+  PINRemoteImage: d6d51c5d2adda55f1ce30c96e850b6c4ebd2856a
+  Texture: fd48858d030388507518f606775f3f80b38b5092
+
+PODFILE CHECKSUM: 25d5b856c081cb8501898db328fef7292920cc88
+
+COCOAPODS: 1.12.0

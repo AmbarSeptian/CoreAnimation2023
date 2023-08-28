@@ -1,0 +1,6 @@
+framework module Pods_CoreAnimationSession {
+  umbrella header "Pods-CoreAnimationSession-umbrella.h"
+
+  export *
+  module * { export * }
+}
