@@ -9,7 +9,7 @@ import AsyncDisplayKit
 import UIKit
 
 internal class CircleDemoViewController: ASViewController<ASDisplayNode> {
-    let box: CircleNode = {
+    let circle: CircleNode = {
         let node = CircleNode()
         node.style.preferredSize = CGSize(width: 200, height: 200)
         return node
@@ -22,7 +22,7 @@ internal class CircleDemoViewController: ASViewController<ASDisplayNode> {
         node.layoutSpecBlock = { [weak self] _, _ in
             guard let self = self else { return ASLayoutSpec() }
 
-            return ASCenterLayoutSpec(centeringOptions: .XY, child: self.box)
+            return ASCenterLayoutSpec(centeringOptions: .XY, child: self.circle)
         }
     }
 
@@ -40,14 +40,17 @@ internal class CircleDemoViewController: ASViewController<ASDisplayNode> {
     }
     
     @objc func onTap() {
-        box.runAnimation()
+        circle.runAnimation()
     }
 }
 
 
 internal class CircleNode: ASDisplayNode {
+    // Create Layers here
     private let gradientLayer = CAGradientLayer()
     private let shapeLayer = CAShapeLayer()
+    
+    // Constants
     private let animationKeys = "AnimationKeys"
     private let lineWidth: CGFloat = 5
     
@@ -78,7 +81,6 @@ internal class CircleNode: ASDisplayNode {
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         
-        
         // Step 2: Setup CAShape Layer
         shapeLayer.strokeColor = UIColor.black.cgColor
         shapeLayer.fillColor = nil
@@ -92,7 +94,7 @@ internal class CircleNode: ASDisplayNode {
     }
     
     internal func runAnimation() {
-        
+        // Setup Animation here
         let scaleKeyFrameAnim = CAKeyframeAnimation(keyPath: "transform.scale")
         scaleKeyFrameAnim.values = [1, 0.95, 1.1, 1]
         scaleKeyFrameAnim.duration = 3
@@ -120,6 +122,7 @@ extension CircleNode: CAAnimationDelegate {
             return
         }
         
+        // Checking the animation key
         switch key {
         case AnimationKey.scale.rawValue:
             break
@@ -137,6 +140,7 @@ extension CircleNode: CAAnimationDelegate {
             return
         }
         
+        // Checking the animation key
         switch key {
         case AnimationKey.scale.rawValue:
             break

@@ -56,7 +56,7 @@ class BoxNode: ASDisplayNode {
     override func didLoad() {
         super.didLoad()
         
-        // Create SubLayer
+        // Create SubLayer - Make sure thread safe
         subLayer.frame = .init(x: 20, y: 20, width: 100, height: 100)
         subLayer.cornerRadius = 8
         subLayer.shadowRadius = 4
@@ -64,6 +64,11 @@ class BoxNode: ASDisplayNode {
         
         // Add SubLayer
         layer.addSublayer(subLayer)
+    }
+    
+    override func layout() {
+        super.layout()
+        // Update layout here
     }
     
     func runAnimation() {
