@@ -68,10 +68,10 @@ class BoxNode: ASDisplayNode {
     
     func runAnimation() {
         // Simple Animation
-        let animation = CABasicAnimation()
+        let animation = CABasicAnimation(keyPath: "opacity")
         animation.toValue = 0
         animation.duration = 3
-        animation.keyPath = "opacity"
+        
         
         // DON'T DO THIS
 //         animation.fillMode = .forwards
@@ -80,6 +80,7 @@ class BoxNode: ASDisplayNode {
          // Do this instead
 //          subLayer.opacity = 0
         
+
         subLayer.add(animation, forKey: nil)
     }
 }

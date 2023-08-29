@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		938600972A9DD1CC00754BF3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938600962A9DD1CC00754BF3 /* UIColor+Extension.swift */; };
 		93CD75E42A9C40EF008DB9B1 /* DemoSimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD75E32A9C40EF008DB9B1 /* DemoSimpleView.swift */; };
 		93CD75E72A9C4CC0008DB9B1 /* AsyncDisplayKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CD75E62A9C4CC0008DB9B1 /* AsyncDisplayKit.xcframework */; };
 		93CD75EC2A9C4E72008DB9B1 /* EmitterSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD75EB2A9C4E72008DB9B1 /* EmitterSample.swift */; };
@@ -18,10 +19,10 @@
 		93EA1D2E2A8E157900D34F9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93EA1D2C2A8E157900D34F9A /* Main.storyboard */; };
 		93EA1D302A8E157C00D34F9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93EA1D2F2A8E157C00D34F9A /* Assets.xcassets */; };
 		93EA1D332A8E157C00D34F9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93EA1D312A8E157C00D34F9A /* LaunchScreen.storyboard */; };
-		93EA1D3D2A8E743500D34F9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EA1D3C2A8E743500D34F9A /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		938600962A9DD1CC00754BF3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		93CD75E32A9C40EF008DB9B1 /* DemoSimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSimpleView.swift; sourceTree = "<group>"; };
 		93CD75E62A9C4CC0008DB9B1 /* AsyncDisplayKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AsyncDisplayKit.xcframework; path = Carthage/Build/AsyncDisplayKit.xcframework; sourceTree = "<group>"; };
 		93CD75EB2A9C4E72008DB9B1 /* EmitterSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterSample.swift; sourceTree = "<group>"; };
@@ -35,7 +36,6 @@
 		93EA1D2F2A8E157C00D34F9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93EA1D322A8E157C00D34F9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93EA1D342A8E157C00D34F9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93EA1D3C2A8E743500D34F9A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 			children = (
 				93EA1D262A8E157900D34F9A /* AppDelegate.swift */,
 				93EA1D282A8E157900D34F9A /* SceneDelegate.swift */,
-				93EA1D3C2A8E743500D34F9A /* ViewController.swift */,
+				938600962A9DD1CC00754BF3 /* UIColor+Extension.swift */,
 				93CD75EA2A9C4E4E008DB9B1 /* Demo */,
 				93CD75ED2A9C4E79008DB9B1 /* BonusGan */,
 				93EA1D2C2A8E157900D34F9A /* Main.storyboard */,
@@ -182,13 +182,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				93EA1D2B2A8E157900D34F9A /* CircleView.swift in Sources */,
-				93EA1D3D2A8E743500D34F9A /* ViewController.swift in Sources */,
 				93CD75EC2A9C4E72008DB9B1 /* EmitterSample.swift in Sources */,
 				93CD75E42A9C40EF008DB9B1 /* DemoSimpleView.swift in Sources */,
 				93EA1D272A8E157900D34F9A /* AppDelegate.swift in Sources */,
 				93EA1D292A8E157900D34F9A /* SceneDelegate.swift in Sources */,
 				93CD75F12A9C4FC5008DB9B1 /* TransformSample.swift in Sources */,
 				93CD75EF2A9C4F78008DB9B1 /* ReplicatorSample.swift in Sources */,
+				938600972A9DD1CC00754BF3 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
